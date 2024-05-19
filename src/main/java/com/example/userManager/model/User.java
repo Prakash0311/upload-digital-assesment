@@ -9,12 +9,27 @@ import java.util.UUID;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(columnDefinition = "CHAR(36)")
-    private UUID userId;
+    private int userId;
 
     @NotEmpty
     private String fullName;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", fullName='" + fullName + '\'' +
+                ", mobNum='" + mobNum + '\'' +
+                ", panNum='" + panNum + '\'' +
+                ", manager=" + manager +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", isActive=" + isActive +
+                '}';
+    }
+//private String Fullname;
 
     @Pattern(regexp = "^(\\+91|0)?[6-9]\\d{9}$")
     private String mobNum;
@@ -28,15 +43,15 @@ public class User {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Boolean isActive = true;
+    private Boolean isActive ;
 
     // Getters and setters
 
-    public UUID getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -44,8 +59,8 @@ public class User {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName(String name) {
+        this.fullName = name;
     }
 
     public String getMobNum() {
